@@ -37,6 +37,7 @@ public class ScotchDAOImpl implements ScotchDAO {
 			Scotch mappedScotch = mapper.readValue(scotchJSON, Scotch.class);
 			em.persist(mappedScotch);
 			em.flush();
+			return mappedScotch;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
