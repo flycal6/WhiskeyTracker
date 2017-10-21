@@ -7,3 +7,12 @@ table:hover {
 button:hover {
 	cursor: pointer;
 }
+
+hr {
+	margin: 1em 5em;
+}
+
+#formDiv {
+	/* visibility: hidden; */
+	display: none;
+}

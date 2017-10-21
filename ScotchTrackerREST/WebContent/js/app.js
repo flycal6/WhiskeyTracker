@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	console.log('app.js loaded');
+//	$(newScotch).hide();
 	getData();
 });
 
@@ -9,7 +10,6 @@ function getData() {
 		url : 'rest/scotch/',
 		dataType : 'json'
 	}).done(function(data) {
-//		console.log(data);
 		$('#content').empty();
 		buildTable(data);
 	}).fail(function(err) {
@@ -24,13 +24,12 @@ function buildTable(data) {
 	table.addClass("table");
 	table.addClass("table-striped");
 	table.addClass("table-hover");
-	$('h1').text('Scotch Tracker');
-//	var thead = $('<thead> <tr><th>Scotch Tracker</th></tr> </thead>');
-//	table.append(thead);
+	$('.navbar-brand').text('Scotch Tracker');
 
 	var tbody = $('<tbody>');
-	var tBodyHead = $('<tr><th>Name</th><th>Type</th><th>Price</th><th>Taste</th>');
-	tbody.append(tBodyHead);
+	var thead = $('<thead><tr><th>Name</th><th>Type</th><th>Price</th><th>Taste</th></thead>');
+	thead.addClass("table-primary");
+	table.append(thead);
 	table.append(tbody);
 
 	data.forEach(function(scotch, idx) {
@@ -69,13 +68,13 @@ function buildTable(data) {
 }
 
 function getScotch(scotchId) {
-	// console.log(quizId);
+	// console.log(scotchId);
 	$.ajax({
 		type : 'GET',
 		url : 'rest/scotch/' + scotchId,
 		dataType : 'json'
 	}).done(function(scotch) {
-		// console.log(quiz);
+		// console.log(scotch);
 		$('#content').empty();
 		viewScotch(scotch);
 	}).fail(function(err) {
@@ -85,7 +84,7 @@ function getScotch(scotchId) {
 }
 
 function viewScotch(scotch) {
-	$('h1').text(scotch.name);
+	$('.navbar-brand').text(scotch.name);
 
 	var dl = $('<dl>');
 	dl.attr("id", "detailViewList")
@@ -97,26 +96,31 @@ function viewScotch(scotch) {
 		dt.addClass("col-sm-2");
 		var dd = $('<dd>');
 		dd.addClass("col-sm-10");
-		
 
-//		if (idx % 2 == 0) {
-//			li.addClass('stripe');
-//		}
 //		console.log(s);
 		dt.text(s);
 		dd.text(scotch[s]);
-//		if (s == 'id')
-//			li.attr("id", scotch[s] + "li");
 
 		dl.append(dt, dd);
 	});
-	var btn = $('<button>');
-	btn.text("Scotch Index");
-	btn.attr("id", "indexButton");
-	btn.addClass("btn");
-	btn.click(function(e){
+	
+	var indexBtn = $('<button>');
+	indexBtn.text("Scotch Index");
+	indexBtn.attr("id", "indexButton");
+	indexBtn.addClass("btn");
+	indexBtn.click(function(e){
+		console.log("index button var");
 		getData();
 	});
 
-	$('#content').append(dl, btn);
+	var updateBtn = $('<button>');
+	console.log("update button var");
+	updateBtn.text('Update Entry');
+	updateBtn.attr("id", "updateButton");
+	updateBtn.addClass("btn btn-primary");
+	updateBtn.click(function(e){
+		console.log("update button clicked");
+	});
+
+	$('#content').append(dl, indexBtn, updateBtn);
 }
