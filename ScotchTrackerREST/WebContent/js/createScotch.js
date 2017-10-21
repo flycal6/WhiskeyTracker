@@ -16,6 +16,24 @@ $(newScotch.submit).click(function(e){
 		purchasePlace : $(newScotch.purchasePlace).val(),
 		notes : $(newScotch.notes).val(),
 	};
-	console.log(scotch);
-	// createScotch();
+	// console.log(scotch);
+	createScotch(scotch);
 });
+
+function createScotch(scotch) {
+	$.ajax({
+		type: 'POST',
+		url: 'rest/scotch/',
+		dataType: 'json',
+		contentType: 'application/json',
+		data: JSON.stringify(scotch)
+	})
+	.done(function (scotch) {
+		console.log(scotch.id);
+		getScotch(scotch.id);
+	})
+	.fail(function (err) {
+		console.error('ajax failure');
+		console.error(err);
+	});
+}

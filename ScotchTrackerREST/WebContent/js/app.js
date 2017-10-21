@@ -76,6 +76,7 @@ function getScotch(scotchId) {
 	}).done(function(scotch) {
 		// console.log(scotch);
 		$('#content').empty();
+		$('#formDiv').hide();
 		viewScotch(scotch);
 	}).fail(function(err) {
 		console.error('ajax fail');
@@ -103,7 +104,7 @@ function viewScotch(scotch) {
 
 		dl.append(dt, dd);
 	});
-	
+
 	var indexBtn = $('<button>');
 	indexBtn.text("Scotch Index");
 	indexBtn.attr("id", "indexButton");
