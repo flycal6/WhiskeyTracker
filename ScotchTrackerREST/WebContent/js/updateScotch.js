@@ -1,10 +1,10 @@
-$(document).ready(function(){
-	console.log("updateScotch.js loaded");
+$(document).ready(function() {
+    console.log("updateScotch.js loaded");
 });
 
-function updateScotch(scotch) {
+function viewScotchToUpdate(scotch) {
     console.log('in updateScotch()');
-    console.log(scotch);
+    // console.log(scotch);
     $('#content').empty();
     $('#formDiv').show();
     $('#createSubmit').hide();
@@ -17,19 +17,40 @@ function updateScotch(scotch) {
     $(newScotch.age).val(scotch.age);
     $(newScotch.purchasePlace).val(scotch.purchasePlace);
     $(newScotch.notes).val(scotch.notes);
-	// $.ajax({
-	// 	type: 'POST',
-	// 	url: 'rest/scotch/',
-	// 	dataType: 'json',
-	// 	contentType: 'application/json',
-	// 	data: JSON.stringify(scotch)
-	// })
-	// .done(function (scotch) {
-	// 	console.log(scotch.id);
-	// 	getScotch(scotch.id);
-	// })
-	// .fail(function (err) {
-	// 	console.error('ajax failure');
-	// 	console.error(err);
-	// });
+
+    $('#updateSubmit').click(function (e) {
+        e.preventDefault();
+
+        var scotchToUpdate = {
+            id: scotch.id,
+            name : $(newScotch.name).val(),
+            type : $(newScotch.type).val(),
+            price : $(newScotch.price).val(),
+            taste : $(newScotch.taste).val(),
+            age : $(newScotch.age).val(),
+            purchasePlace : $(newScotch.purchasePlace).val(),
+            notes : $(newScotch.notes).val(),
+        };
+        performUpdate(scotch.id, scotchToUpdate);
+    });
+}
+function performUpdate(id, scotch) {
+    console.log("id: " + id);
+    console.log(scotch);
+    $.ajax({
+        type: 'PUT',
+        url: 'rest/scotch/' + id,
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(scotch)
+    })
+    .done(function(data) {
+        // console.log(data);
+        getScotch(data.id);
+    })
+    .fail(function(err) {
+        console.error('ajax failure');
+        console.error(err);
+    });
+
 }

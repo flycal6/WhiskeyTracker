@@ -115,13 +115,12 @@ function viewScotch(scotch) {
 	});
 
 	var updateBtn = $('<button>');
-	console.log("update button var");
 	updateBtn.text('Update Entry');
 	updateBtn.attr("id", "updateButton");
 	updateBtn.addClass("btn btn-primary");
 	updateBtn.click(function(e){
 		// console.log(scotch);
-		updateScotch(scotch);
+		viewScotchToUpdate(scotch);
 	});
 
 	$('#content').append(dl, indexBtn, updateBtn);
