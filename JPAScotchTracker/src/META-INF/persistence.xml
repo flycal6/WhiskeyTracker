@@ -9,7 +9,7 @@
     </provider>
 
     <!-- List Entities Here -->
-    <class>entities.Fillup</class>
+    <class>entities.Scotch</class>
 
     
 
