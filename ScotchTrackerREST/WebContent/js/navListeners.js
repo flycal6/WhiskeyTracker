@@ -4,6 +4,7 @@ $(document).ready(function () {
 
 $('#newLink').click(function (e) {
 	$('#content').empty();
+    newScotch.reset();
 	$('#formDiv').show();
     $('#createSubmit').show();
     $('#updateSubmit').hide();
