@@ -1,4 +1,9 @@
 @charset "UTF-8";
-.stripe {
-    background-color: orange;
+
+table:hover {
+	cursor: pointer;
+}
+
+button:hover {
+	cursor: pointer;
 }

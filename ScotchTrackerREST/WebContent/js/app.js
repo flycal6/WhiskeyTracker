@@ -9,7 +9,7 @@ function getData() {
 		url : 'rest/scotch/',
 		dataType : 'json'
 	}).done(function(data) {
-		console.log(data);
+//		console.log(data);
 		$('#content').empty();
 		buildTable(data);
 	}).fail(function(err) {
@@ -19,14 +19,15 @@ function getData() {
 }
 
 function buildTable(data) {
-	console.log('in buildTable()');
+//	console.log('in buildTable()');
 	var table = $('<table>');
 	table.addClass("table");
 	table.addClass("table-striped");
-	
-	var thead = $('<thead> <tr><th>Scotch Tracker</th></tr> </thead>');
-	table.append(thead);
-	
+	table.addClass("table-hover");
+	$('h1').text('Scotch Tracker');
+//	var thead = $('<thead> <tr><th>Scotch Tracker</th></tr> </thead>');
+//	table.append(thead);
+
 	var tbody = $('<tbody>');
 	var tBodyHead = $('<tr><th>Name</th><th>Type</th><th>Price</th><th>Taste</th>');
 	tbody.append(tBodyHead);
@@ -47,10 +48,10 @@ function buildTable(data) {
 
 		td1.text(scotch.name);
 		// td1.attr("id", scotch.id);
-		//		
+		//
 		td2.text(scotch.type);
 		// td2.attr("class", "gallons");
-		//		
+		//
 		td3.text(scotch.price);
 		// td3.attr("class", "odo");
 
@@ -86,29 +87,36 @@ function getScotch(scotchId) {
 function viewScotch(scotch) {
 	$('h1').text(scotch.name);
 
-	var ul = $('<ul>');
-	ul.attr("id", "detailViewList")
+	var dl = $('<dl>');
+	dl.attr("id", "detailViewList")
+	dl.addClass("row");
 
 	Object.keys(scotch).forEach(function(s, idx) {
 //		console.log(scotch[s]);
-		var li = $('<li>')
+		var dt = $('<dt>');
+		dt.addClass("col-sm-2");
+		var dd = $('<dd>');
+		dd.addClass("col-sm-10");
+		
 
-		if (idx % 2 == 0) {
-			li.addClass('stripe');
-		}
+//		if (idx % 2 == 0) {
+//			li.addClass('stripe');
+//		}
 //		console.log(s);
-		li.text(scotch[s]);
+		dt.text(s);
+		dd.text(scotch[s]);
 //		if (s == 'id')
 //			li.attr("id", scotch[s] + "li");
 
-		ul.append(li);
+		dl.append(dt, dd);
 	});
 	var btn = $('<button>');
 	btn.text("Scotch Index");
 	btn.attr("id", "indexButton");
+	btn.addClass("btn");
 	btn.click(function(e){
 		getData();
 	});
-	
-	$('#content').append(ul, btn);
+
+	$('#content').append(dl, btn);
 }
