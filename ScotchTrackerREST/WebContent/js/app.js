@@ -20,7 +20,13 @@ function getData() {
 
 function buildTable(data) {
 	console.log('in buildTable()');
-	var table = $('<table> <thead> <tr><th>Scotch Tracker</th></tr> </thead>');
+	var table = $('<table>');
+	table.addClass("table");
+	table.addClass("table-striped");
+	
+	var thead = $('<thead> <tr><th>Scotch Tracker</th></tr> </thead>');
+	table.append(thead);
+	
 	var tbody = $('<tbody>');
 	var tBodyHead = $('<tr><th>Name</th><th>Type</th><th>Price</th><th>Taste</th>');
 	tbody.append(tBodyHead);
