@@ -13,6 +13,9 @@ hr {
 }
 
 #formDiv {
-	/* visibility: hidden; */
+	display: none;
+}
+
+#updateSubmit {
 	display: none;
 }

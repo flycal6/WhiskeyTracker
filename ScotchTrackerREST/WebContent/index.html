@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="./css/master.css">
 <title>Insert title here</title>
 <script src="./js/jquery-3.2.1.min.js"></script>
-<title>Insert title here</title>
+<title>Scotchy scotchy scotch</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -20,7 +20,7 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+				<a class="nav-item nav-link active" id="navHome" href="#">Home <span class="sr-only">(current)</span></a>
 				<a class="nav-item nav-link" href="#">List</a>
 				<a class="nav-item nav-link" id="newLink" href="#">New</a>
 				<a class="nav-item nav-link disabled" href="#">Report</a>
@@ -69,7 +69,8 @@
 				<textarea class="form-control" name="notes" class="form-control" rows="3"></textarea>
 				<small id="notesHelp" class="form-text text-muted">Anything else worth noting</small>
 			</div>
-			<input type="submit" class="btn btn-primary" name="submit" value="Add Scotch">
+			<input type="submit" class="btn btn-primary" id="createSubmit" name="createSubmit" value="Add Scotch">
+			<input type="submit" class="btn btn-primary" id="updateSubmit" name="updateSubmit" value="Update Entry">
 
 		</form>
 
@@ -80,6 +81,8 @@
 
 
 
+	<script src="./js/navListeners.js"></script>
+	<script src="./js/updateScotch.js"></script>
 	<script src="./js/createScotch.js"></script>
 	<script src="./js/app.js"></script>
 	<script src="./js/popper.min.js"></script>

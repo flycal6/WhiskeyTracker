@@ -1,11 +1,8 @@
 $(document).ready(function(){
 	console.log("createScotch.js loaded");
 });
-$('#newLink').click(function (e) {
-	$('#content').empty();
-	$('#formDiv').show();
-});
-$(newScotch.submit).click(function(e){
+
+$(newScotch.createSubmit).click(function(e){
 	e.preventDefault();
 	var scotch = {
 		name : $(newScotch.name).val(),
@@ -29,7 +26,6 @@ function createScotch(scotch) {
 		data: JSON.stringify(scotch)
 	})
 	.done(function (scotch) {
-		console.log(scotch.id);
 		getScotch(scotch.id);
 	})
 	.fail(function (err) {

@@ -11,6 +11,7 @@ function getData() {
 		dataType : 'json'
 	}).done(function(data) {
 		$('#content').empty();
+		$('#formDiv').hide();
 		buildTable(data);
 	}).fail(function(err) {
 		console.error('ajax fail');
@@ -110,7 +111,6 @@ function viewScotch(scotch) {
 	indexBtn.attr("id", "indexButton");
 	indexBtn.addClass("btn");
 	indexBtn.click(function(e){
-		console.log("index button var");
 		getData();
 	});
 
@@ -120,7 +120,8 @@ function viewScotch(scotch) {
 	updateBtn.attr("id", "updateButton");
 	updateBtn.addClass("btn btn-primary");
 	updateBtn.click(function(e){
-		console.log("update button clicked");
+		// console.log(scotch);
+		updateScotch(scotch);
 	});
 
 	$('#content').append(dl, indexBtn, updateBtn);
