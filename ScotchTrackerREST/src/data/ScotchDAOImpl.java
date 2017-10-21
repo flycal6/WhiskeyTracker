@@ -58,6 +58,7 @@ public class ScotchDAOImpl implements ScotchDAO {
 			scotchUpdate.setPurchasePlace(mappedScotch.getPurchasePlace());
 			scotchUpdate.setTaste(mappedScotch.getTaste());
 			scotchUpdate.setType(mappedScotch.getType());
+			return scotchUpdate;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

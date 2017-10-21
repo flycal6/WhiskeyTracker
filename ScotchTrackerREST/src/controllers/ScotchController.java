@@ -46,7 +46,7 @@ public class ScotchController {
 	
 	@RequestMapping(path="/{id}", method = RequestMethod.PUT)
 	public Scotch update(@PathVariable int id, @RequestBody String scotchJSON, HttpServletResponse res) {
-		res.setStatus(204);
+		res.setStatus(202);
 		return scotchDao.update(id, scotchJSON);
 	}
 	
