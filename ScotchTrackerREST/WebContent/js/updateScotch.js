@@ -19,7 +19,11 @@ function viewScotchToUpdate(scotch) {
     $(newScotch.notes).val(scotch.notes);
 
     $('#updateSubmit').click(function (e) {
+        console.log('update button clicked');
         e.preventDefault();
+        // prevents multiple submissions and overwriting of other entries
+        // not sure what code is causing the multiple submissions
+        e.stopImmediatePropagation();
 
         var scotchToUpdate = {
             id: scotch.id,
@@ -31,18 +35,18 @@ function viewScotchToUpdate(scotch) {
             purchasePlace : $(newScotch.purchasePlace).val(),
             notes : $(newScotch.notes).val(),
         };
-        performUpdate(scotch.id, scotchToUpdate);
+        performUpdate(scotchToUpdate);
     });
 }
-function performUpdate(id, scotch) {
-    console.log("id: " + id);
-    console.log(scotch);
+function performUpdate(scotchToUpdate) {
+    console.log("id: " + scotchToUpdate.id);
+    console.log(scotchToUpdate);
     $.ajax({
         type: 'PUT',
-        url: 'rest/scotch/' + id,
+        url: 'rest/scotch/' + scotchToUpdate.id,
         dataType: 'json',
         contentType: 'application/json',
-        data: JSON.stringify(scotch)
+        data: JSON.stringify(scotchToUpdate)
     })
     .done(function(data) {
         // console.log(data);
