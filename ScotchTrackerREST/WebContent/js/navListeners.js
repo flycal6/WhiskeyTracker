@@ -1,6 +1,6 @@
-$(document).ready(function () {
-    console.log('navListeners.js loaded');
-});
+// $(document).ready(function () {
+//     console.log('navListeners.js loaded');
+// });
 
 $('#newLink').click(function (e) {
 	$('#content').empty();
@@ -12,4 +12,8 @@ $('#newLink').click(function (e) {
 
 $('#navHome').click(function (e) {
     getData();
+});
+
+$('#navReport').click(function (e) {
+    getReportData();
 });

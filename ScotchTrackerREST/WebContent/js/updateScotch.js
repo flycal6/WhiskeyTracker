@@ -1,6 +1,6 @@
-$(document).ready(function() {
-    console.log("updateScotch.js loaded");
-});
+// $(document).ready(function() {
+//     console.log("updateScotch.js loaded");
+// });
 
 function viewScotchToUpdate(scotch) {
     console.log('in updateScotch()');

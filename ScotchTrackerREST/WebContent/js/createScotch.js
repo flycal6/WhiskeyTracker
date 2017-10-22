@@ -1,6 +1,6 @@
-$(document).ready(function(){
-	console.log("createScotch.js loaded");
-});
+// $(document).ready(function(){
+// 	console.log("createScotch.js loaded");
+// });
 
 $(newScotch.createSubmit).click(function(e){
 	e.preventDefault();

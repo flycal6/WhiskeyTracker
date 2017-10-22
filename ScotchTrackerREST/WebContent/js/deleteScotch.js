@@ -1,6 +1,6 @@
-$(document).ready(function() {
-    console.log("deleteScotch.js loaded");
-});
+// $(document).ready(function() {
+//     console.log("deleteScotch.js loaded");
+// });
 
 function deleteScotch(scotch) {
     $.ajax({

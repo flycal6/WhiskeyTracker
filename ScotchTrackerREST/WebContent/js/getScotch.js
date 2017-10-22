@@ -1,6 +1,6 @@
-$(document).ready(function () {
-    console.log("getScotch.js loaded");
-});
+// $(document).ready(function () {
+//     console.log("getScotch.js loaded");
+// });
 
 function getScotch(scotchId) {
 	// console.log(scotchId);
@@ -29,13 +29,28 @@ function viewScotch(scotch) {
 	Object.keys(scotch).forEach(function(s, idx) {
 //		console.log(scotch[s]);
 		var dt = $('<dt>');
-		dt.addClass("col-sm-2");
+		dt.addClass("col-sm-3");
 		var dd = $('<dd>');
-		dd.addClass("col-sm-10");
+		dd.addClass("col-sm-9");
 
 //		console.log(s);
-		dt.text(s);
-		dd.text(scotch[s]);
+        if(s == 'id'){
+            dt.hide();
+            dd.hide();
+        }
+        else if (s == 'purchasePlace') {
+            dt.text('Purchased at');
+            dd.text(scotch[s]);
+        }
+        else if(s == 'age'){
+            dt.text('Years Aged');
+            dd.text(scotch[s]);
+        }
+        else {
+            var sCap = s.substr(0,1).toUpperCase()+s.substr(1);
+    		dt.text(sCap);
+    		dd.text(scotch[s]);
+        }
 
 		dl.append(dt, dd);
 	});
@@ -43,7 +58,7 @@ function viewScotch(scotch) {
 	var indexBtn = $('<button>');
 	indexBtn.text("Scotch Index");
 	indexBtn.attr("id", "indexButton");
-	indexBtn.addClass("btn");
+	indexBtn.addClass("btn btn-info");
 	indexBtn.click(function(e){
 		getData();
 	});
@@ -51,7 +66,7 @@ function viewScotch(scotch) {
 	var updateBtn = $('<button>');
 	updateBtn.text('Update Entry');
 	updateBtn.attr("id", "updateButton");
-	updateBtn.addClass("btn btn-primary");
+	updateBtn.addClass("btn btn-warning");
 	updateBtn.click(function(e){
 		// console.log(scotch);
 		viewScotchToUpdate(scotch);
@@ -64,6 +79,7 @@ function viewScotch(scotch) {
     deleteBtn.click(function (e) {
         deleteScotch(scotch);
     });
-
-	$('#content').append(dl, indexBtn, updateBtn, deleteBtn);
+    var div = $('<div class="btn-group" role="group">');
+    div.append(indexBtn, updateBtn, deleteBtn);
+	$('#content').append(dl, div);
 }

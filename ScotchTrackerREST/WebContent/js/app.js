@@ -1,6 +1,5 @@
 $(document).ready(function() {
-	console.log('app.js loaded');
-//	$(newScotch).hide();
+	// console.log('app.js loaded');
 	getData();
 });
 

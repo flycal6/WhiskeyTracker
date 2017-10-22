@@ -55,4 +55,5 @@ public class ScotchController {
 		res.setStatus(204);
 		return scotchDao.destroy(id);
 	}
+
 }
