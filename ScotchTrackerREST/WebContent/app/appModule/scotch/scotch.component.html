@@ -1,0 +1,25 @@
+<table class="table table-striped table-hover">
+	<thead class="thead-inverse">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Price</th>
+			<th>Taste</th>
+		
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="s in vm.scotches">
+			<td>{{s.name}}</td>
+			<td>{{s.type}}</td>
+			<td>{{s.price}}</td>
+			<td>{{s.taste}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- **************** only show while waiting for server response *************************** -->
+    <div id="loading" ng-show="vm.loading > 0">
+            <p class="display-3 text-center lead">Loading</p>
+            <img class="img-fluid mx-auto d-block" src="./img/catLoader.gif">
+    </div>
