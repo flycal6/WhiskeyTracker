@@ -69,6 +69,7 @@ public class ScotchDAOImpl implements ScotchDAO {
 	public boolean destroy(int id) {
 		try {
 			em.remove(em.find(Scotch.class, id));
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
