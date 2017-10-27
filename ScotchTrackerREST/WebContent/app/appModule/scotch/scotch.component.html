@@ -1,4 +1,6 @@
-<table class="table table-striped table-hover">
+
+<!-- /*********************** index table *********************************************/ -->
+<table class="table table-striped table-hover" ng-hide="vm.selected">
 	<thead class="thead-inverse">
 		<tr>
 			<th>Name</th>
@@ -9,7 +11,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="s in vm.scotches">
+		<tr ng-repeat="s in vm.scotches" ng-click="vm.showSingle(s.id)">
 			<td>{{s.name}}</td>
 			<td>{{s.type}}</td>
 			<td>{{s.price}}</td>
@@ -17,6 +19,22 @@
 		</tr>
 	</tbody>
 </table>
+
+<!-- /*********************** Detailed View *********************************************/ -->
+<div class="container" ng-show="vm.selected">
+    <h2 class="display-2 text-justify">{{vm.selected.name}}</h2>
+    <p><strong>Type </strong><span class="lead">{{vm.selected.type}}</span></p>
+    <p><strong>Price </strong><span class="lead">${{vm.selected.price}}</span></p>
+    <p><strong>Taste </strong><span class="lead">{{vm.selected.taste}}/10</span></p>
+    <p><strong>Age </strong><span class="lead">{{vm.selected.age}} years</span></p>
+    <p><strong>Purchased at </strong><span class="lead">{{vm.selected.purchasePlace}}</span></p>
+    <p><strong>Notes </strong><span class="lead">{{vm.selected.notes}}</span></p>
+
+
+<button class="btn btn-primary" ng-click="vm.selected = null">Back</button>
+</div>
+
+
 
 <!-- **************** only show while waiting for server response *************************** -->
     <div id="loading" ng-show="vm.loading > 0">
