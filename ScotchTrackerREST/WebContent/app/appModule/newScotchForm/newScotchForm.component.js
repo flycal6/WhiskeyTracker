@@ -1,5 +1,5 @@
-angular.module('appModule').component('scotch', {
-	templateUrl : 'app/appModule/scotch/scotch.component.html',
+angular.module('appModule').component('newScotchForm', {
+	templateUrl : 'app/appModule/newScotchForm/newScotchForm.component.html',
 	controller : function(scotchService, $routeParams, $location) {
 		var vm = this;
 		
@@ -9,9 +9,6 @@ angular.module('appModule').component('scotch', {
 		vm.loading = 0;
 
 		vm.scotches = [];
-		vm.adding = function(val) {
-			addFormService.showForm(val);
-		}
 		
 /** ******** Index Loading/Refreshing ***************************** */
 		var reload = function(){
@@ -23,35 +20,19 @@ angular.module('appModule').component('scotch', {
 		};
 		
 		reload();
-		
-/** ******** View Detail Single Scotch **************************************** */
-		vm.showSingle = function(id){
-			vm.adding = null;
-			console.log("add val:")
-			vm.loading = 1;
-			scotchService.show(id).then(function(res){
-				vm.loading = 0;
-				vm.selected = res.data;
-			})
-			.catch(function(err){
-				$location.path('/404');
-			})
-		}
 	
 /** ******** Add a New Scotch **************************************** */
 
 		vm.addScotch = function(scotch){
-			vm.adding(false);
 			vm.loading = 1;
 			scotchService.create(scotch).then(function(res){
 				reload();
+				$location.path('/scotch');
 			});
 		};
 	
 	},
 	
-	
-/** ******** View Detail Single Scotch **************************************** */
-	
 	controllerAs: 'vm'
-});
+	
+})

@@ -4,6 +4,9 @@ angular.module('appModule', ['ngRoute'])
 		.when('/scotch', {
 			template: '<scotch></scotch>'
 		})
+		.when('/add', {
+			template: '<new-scotch-form></new-scotch-form>'
+		})
 		.when('/', {
 			template: '<scotch></scotch>'
 		})

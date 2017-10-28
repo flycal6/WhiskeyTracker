@@ -1,0 +1,44 @@
+<!-- /*********************** Add a New Entry *********************************************/ -->
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label for="name">Scotch Name</label>
+            <input ng-model="s.name" type="text" name="name" class="form-control" id="name"placeholder="Name" required>
+        </div>
+            <div class="form-group">
+            <label for="type">Whiskey Type</label>
+            <input ng-model="s.type" type="text" name="type" class="form-control" placeholder="Type of Whiskey" required>
+            <small id="typeHelp" class="form-text text-muted">eg. Highlands, Bourbon, Sour Mash...</small>
+        </div>
+        <div class="form-group">
+            <label for="price">Price Paid</label>
+            <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input ng-model="s.price" type="number" min="0" step=".01" name="price" class="form-control" placeholder="Price" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="taste">Taste</label>
+            <input ng-model="s.taste" type="number" min="1" max="10" name="taste" class="form-control" placeholder="Taste" required>
+            <small id="tasteHelp" class="form-text text-muted">On a scale from 1 - 10</small>
+        </div>
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input ng-model="s.age" type="number" name="age" class="form-control" placeholder="Age" required>
+            <small id="ageHelp" class="form-text text-muted">How many years has it aged</small>
+        </div>
+        <div class="form-group">
+            <label for="purchasePlace">Store</label>
+            <input ng-model="s.purchasePlace" type="text" name="purchasePlace" class="form-control" placeholder="Place of Purchase" required>
+            <small id="placeHelp" class="form-text text-muted">Where did you buy it</small>
+        </div>
+        <div class="form-group">
+            <label for="notes">Notes</label>
+            <textarea ng-model="s.notes" class="form-control" name="notes" class="form-control" rows="3"></textarea>
+            <small id="notesHelp" class="form-text text-muted">Anything else worth noting</small>
+        </div>
+        <input type="submit" ng-click="vm.addScotch(s); s = {};" class="btn btn-primary" id="createSubmit" name="createSubmit" value="Add Scotch">
+
+    </form>
+ </div>
+
