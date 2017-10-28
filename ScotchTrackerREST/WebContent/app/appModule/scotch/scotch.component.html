@@ -11,7 +11,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="s in vm.scotches" ng-click="vm.showSingle(s.id)">
+		<tr ng-repeat="s in vm.scotches | orderBy : 'name'" ng-click="vm.showSingle(s.id)">
 			<td>{{s.name}}</td>
 			<td>{{s.type}}</td>
 			<td>{{s.price}}</td>
