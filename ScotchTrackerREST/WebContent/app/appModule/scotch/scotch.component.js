@@ -9,9 +9,6 @@ angular.module('appModule').component('scotch', {
 		vm.loading = 0;
 
 		vm.scotches = [];
-		vm.adding = function(val) {
-			addFormService.showForm(val);
-		}
 		
 /** ******** Index Loading/Refreshing ***************************** */
 		var reload = function(){
@@ -36,7 +33,7 @@ angular.module('appModule').component('scotch', {
 			.catch(function(err){
 				$location.path('/404');
 			})
-		}
+		};
 	
 /** ******** Add a New Scotch **************************************** */
 
@@ -48,9 +45,16 @@ angular.module('appModule').component('scotch', {
 			});
 		};
 	
+/** ******** Add a New Scotch **************************************** */
+		vm.remove = function(id){
+			vm.loading = 1;
+			scotchService.destroy(id).then(function(res){
+				vm.loading = 0;
+				vm.selected = null;
+				reload();
+			});
+		};
 	},
-	
-	
 /** ******** View Detail Single Scotch **************************************** */
 	
 	controllerAs: 'vm'
