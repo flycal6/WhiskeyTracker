@@ -21,7 +21,7 @@
 </table>
 
 <!-- /*********************** Detailed View *********************************************/ -->
-<div class="container" ng-show="vm.selected">
+<div class="container" ng-show="vm.selected && !vm.updateScotch">
     <h2 class="display-2 text-justify">{{vm.selected.name}}</h2>
     <p><strong>Type </strong><span class="lead">{{vm.selected.type}}</span></p>
     <p><strong>Price </strong><span class="lead">${{vm.selected.price}}</span></p>
@@ -32,11 +32,54 @@
 
 
 <button class="btn btn-danger" ng-click="vm.remove(vm.selected.id)">Delete</button>
-<button class="btn btn-primary" ng-click="vm.selected = null">Back</button>
+<button class="btn btn-warning" ng-click="vm.setUpdateScotch()">Update</button>
+<button class="btn btn-primary" ng-click="vm.selected = null; vm.updateScotch = null;">Go Back</button>
 </div>
 
 
+<!-- /*********************** Edit View *********************************************/ -->
+<div class="container" ng-show="vm.updateScotch">
+    <form>
+        <div class="form-group">
+            <label for="name">Scotch Name</label>
+            <input ng-model="vm.selected.name" type="text" name="name" class="form-control" id="name" required>
+        </div>
+            <div class="form-group">
+            <label for="type">Whiskey Type</label>
+            <input ng-model="vm.selected.type" type="text" name="type" class="form-control" required>
+            <small id="typeHelp" class="form-text text-muted">eg. Highlands, Bourbon, Sour Mash...</small>
+        </div>
+        <div class="form-group">
+            <label for="price">Price Paid</label>
+            <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input ng-model="vm.selected.price" type="number" min="0" step=".01" name="price" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="taste">Taste</label>
+            <input ng-model="vm.selected.taste" type="number" min="1" max="10" name="taste" class="form-control" required>
+            <small id="tasteHelp" class="form-text text-muted">On a scale from 1 - 10</small>
+        </div>
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input ng-model="vm.selected.age" type="number" name="age" class="form-control" required>
+            <small id="ageHelp" class="form-text text-muted">How many years has it aged</small>
+        </div>
+        <div class="form-group">
+            <label for="purchasePlace">Store</label>
+            <input ng-model="vm.selected.purchasePlace" type="text" class="form-control" required>
+            <small id="placeHelp" class="form-text text-muted">Where did you buy it</small>
+        </div>
+        <div class="form-group">
+            <label for="notes">Notes</label>
+            <textarea ng-model="vm.selected.notes" class="form-control" name="notes" class="form-control" rows="3"></textarea>
+            <small id="notesHelp" class="form-text text-muted">Anything else worth noting</small>
+        </div>
+        <input type="submit" ng-click="vm.update(vm.selected)" class="btn btn-primary" value="Update Entry">
 
+    </form>
+ </div>
 <!-- **************** only show while waiting for server response *************************** -->
     <div id="loading" ng-show="vm.loading > 0">
             <p class="display-3 text-center lead">Loading</p>

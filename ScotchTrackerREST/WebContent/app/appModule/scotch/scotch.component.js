@@ -5,6 +5,8 @@ angular.module('appModule').component('scotch', {
 		
 // scotch selected for detail view
 		vm.selected = null;
+		
+		vm.updateScotch = null;
 // track whether or not to show loading gif
 		vm.loading = 0;
 
@@ -45,7 +47,24 @@ angular.module('appModule').component('scotch', {
 			});
 		};
 	
-/** ******** Add a New Scotch **************************************** */
+/** ******** Update a Scotch **************************************** */
+		vm.showUpdateForm = null;
+		vm.setUpdateScotch = function(){
+			console.log('setting update')
+			vm.updateScotch = vm.selected;
+		};
+		
+		vm.update = function(scotch){
+			vm.loading = 1;
+			scotchService.update(scotch).then(function(res){
+				vm.updateScotch = null;
+				vm.selected = null;
+				vm.loading = 0;
+				reload();
+			})
+		};
+		
+/** ******** Remove a Scotch **************************************** */
 		vm.remove = function(id){
 			vm.loading = 1;
 			scotchService.destroy(id).then(function(res){
