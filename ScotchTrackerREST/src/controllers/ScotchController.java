@@ -1,6 +1,6 @@
 package controllers;
 
-import java.util.List;
+import java.util.Collection;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,7 +27,7 @@ public class ScotchController {
 	}
 	
 	@RequestMapping(path="/", method=RequestMethod.GET)
-	public List<Scotch> index(HttpServletResponse res){
+	public Collection<Scotch> index(HttpServletResponse res){
 		res.setStatus(202);
 		return scotchDao.index();
 	}

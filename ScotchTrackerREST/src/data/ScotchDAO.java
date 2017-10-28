@@ -1,11 +1,11 @@
 package data;
 
-import java.util.List;
+import java.util.Collection;
 
 import entities.Scotch;
 
 public interface ScotchDAO {
-	public List<Scotch> index();
+	public Collection<Scotch> index();
 	public Scotch show(int id);
 	public Scotch create(String scotchJSON);
 	public Scotch update(int id, String scotchJSON);

@@ -1,6 +1,7 @@
 package data;
 
-import java.util.List;
+import java.util.Collection;
+import java.util.HashSet;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,9 +21,9 @@ public class ScotchDAOImpl implements ScotchDAO {
 	private EntityManager em;
 	
 	@Override
-	public List<Scotch> index() {
+	public Collection<Scotch> index() {
 		String query = "SELECT s FROM Scotch s";
-		return em.createQuery(query, Scotch.class).getResultList();
+		return new HashSet<Scotch>(em.createQuery(query, Scotch.class).getResultList());
 	}
 
 	@Override
