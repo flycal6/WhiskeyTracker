@@ -1,1 +1,32 @@
-<h1>Report Template</h1>
+<div class="container">
+<h1 class="display-3 text-center">Analysis</h1>
+<hr>
+
+<!-- **************** only show while waiting for server response *************************** -->
+<div id="loading" ng-show="vm.loading > 0">
+        <p class="display-3 text-center lead">Loading</p>
+        <img class="img-fluid mx-auto d-block" src="./img/catLoader.gif">
+</div>
+    
+<div class="mx-auto card text-white bg-info mb-3 col-sm-6">
+    <div class="card-header">Favorite Tasting Scotch</div>
+    <div class="card-body">
+        <h4 class="card-title">{{vm.bestTaste}}</h4>
+        <p class="card-text">{{vm.bestTasteNotes}}</p>
+        <hr />
+        <p class="card-text">Least Favorite: {{vm.worstTasteName}}</p>
+    </div>
+</div>
+
+<div class="mx-auto card text-white bg-danger mb-3 col-sm-6">
+    <div class="card-header">Money Spent</div>
+    <div class="card-body">
+        <h4 class="card-title">Total Spent: {{vm.totalCost}}</h4>
+        <p class="card-text">on {{vm.numBottles}} bottles</p>
+        <hr />
+        <p class="card-text">Average Price: {{vm.avgCost}}</p>
+        <p class="card-text">Most Expensive: {{vm.maxPriceName}} (${{vm.maxPrice}})</p>
+        <p class="card-text">Least Expensive: {{cheapestName}} (${{vm.maxPrice}})</p>
+    </div>
+</div>
+</div>
