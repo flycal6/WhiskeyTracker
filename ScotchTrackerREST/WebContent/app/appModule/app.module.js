@@ -1,6 +1,9 @@
 angular.module('appModule', ['ngRoute'])
 .config(function($routeProvider){
 	$routeProvider
+		.when('/scotch/:id', {
+			template: '<scotch></scotch>'
+		})
 		.when('/scotch', {
 			template: '<scotch></scotch>'
 		})

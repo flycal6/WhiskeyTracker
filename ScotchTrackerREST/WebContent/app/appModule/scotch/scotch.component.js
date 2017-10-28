@@ -18,6 +18,22 @@ angular.module('appModule').component('scotch', {
 			scotchService.index().then(function(res){
 				vm.loading = 0;
 				vm.scotches = res.data;
+				
+				var found = false;
+				if (!vm.selected && !isNaN(parseInt($routeParams.id))) {
+					vm.scotches.forEach(function(scotch, idx, arr) {
+						if (scotch.id == $routeParams.id) {
+							vm.selected = scotch;
+							found = true;
+						}
+					})
+					if(!found){
+						$location.path('/these-are-not-the-links-you-are-looking-for');
+					}
+				}
+				else if(isNaN(parseInt($routeParams.id)) && typeof $routeParams.id == 'string'){
+					$location.path('/these-are-not-the-links-you-are-looking-for');
+				}
 			});
 		};
 		
@@ -26,16 +42,27 @@ angular.module('appModule').component('scotch', {
 /** ******** View Detail Single Scotch **************************************** */
 		vm.showSingle = function(id){
 			vm.adding = null;
-			console.log("add val:")
 			vm.loading = 1;
 			scotchService.show(id).then(function(res){
 				vm.loading = 0;
 				vm.selected = res.data;
+				console.log(id)
+				$location.path('/scotch/' + id);
+				console.log(vm.selected);
 			})
 			.catch(function(err){
-				$location.path('/404');
+				$location.path('/these-are-not-the-links-you-are-looking-for');
 			})
 		};
+		
+		
+/** ******** View Detail Single Scotch **************************************** */
+		vm.returnToIndex = function() {
+			vm.selected = null;
+			vm.updateScotch = null;
+			$location.path('/scotch');
+		}
+		
 	
 /** ******** Add a New Scotch **************************************** */
 
