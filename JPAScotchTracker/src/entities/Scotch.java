@@ -15,7 +15,7 @@ public class Scotch {
 	private String name;
 	private String type;
 	private double price;
-	private String taste;
+	private int taste;
 	private int age;
 	private String purchasePlace;
 	private String notes;
@@ -40,10 +40,10 @@ public class Scotch {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public String getTaste() {
+	public int getTaste() {
 		return taste;
 	}
-	public void setTaste(String taste) {
+	public void setTaste(int taste) {
 		this.taste = taste;
 	}
 	public int getAge() {
