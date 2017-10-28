@@ -101,6 +101,10 @@ angular.module('appModule').component('scotch', {
 				reload();
 			});
 		};
+		
+/** ******** Remove a Scotch **************************************** */
+		vm.orderProp = 'name';
+		
 	},
 	
 	controllerAs: 'vm'

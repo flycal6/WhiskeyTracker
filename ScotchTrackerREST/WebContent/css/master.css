@@ -19,14 +19,7 @@ hr {
 #updateSubmit {
 	display: none;
 }
-/*
-#indexButton {
-	margin-right: 0.5em;
+
+.th:hover {
+  color: #007bff
 }
-#updateButton {
-	margin-left: 0.2em;
-	margin-right: 0.2em;
-}
-#deleteButton {
-	margin-left: 0.5em;
-}*/
