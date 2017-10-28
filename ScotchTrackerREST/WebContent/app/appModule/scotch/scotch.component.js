@@ -19,6 +19,7 @@ angular.module('appModule').component('scotch', {
 				vm.loading = 0;
 				vm.scotches = res.data;
 				
+//				check route param and go directly to scotch by id, or 404
 				var found = false;
 				if (!vm.selected && !isNaN(parseInt($routeParams.id))) {
 					vm.scotches.forEach(function(scotch, idx, arr) {
@@ -56,7 +57,7 @@ angular.module('appModule').component('scotch', {
 		};
 		
 		
-/** ******** View Detail Single Scotch **************************************** */
+/** ******** Return to index **************************************** */
 		vm.returnToIndex = function() {
 			vm.selected = null;
 			vm.updateScotch = null;
@@ -101,7 +102,6 @@ angular.module('appModule').component('scotch', {
 			});
 		};
 	},
-/** ******** View Detail Single Scotch **************************************** */
 	
 	controllerAs: 'vm'
 });
